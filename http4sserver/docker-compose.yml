@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+
+  server:
+    image: server:0.1.0-SNAPSHOT
+    ports:
+     - "8080:8080"

@@ -22,6 +22,10 @@ lazy val commonSettings = Seq(
   )
 )
 
+lazy val dockerSettings = Seq(
+  dockerBaseImage := "openjdk:jre-alpine"
+)
+
 lazy val root = (project in file("."))
   .aggregate(common, server, client)
 
@@ -29,7 +33,13 @@ lazy val common = (project in file("common"))
   .settings(commonSettings)
 
 lazy val server = (project in file("http4sserver"))
+  .enablePlugins(JavaAppPackaging, DockerPlugin, AshScriptPlugin)
   .dependsOn(common)
+  .settings(dockerSettings)
 
 lazy val client = (project in file("http4sclient"))
   .dependsOn(common)
+
+
+
+
