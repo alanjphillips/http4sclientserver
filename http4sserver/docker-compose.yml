@@ -3,6 +3,6 @@ version: '2'
 services:
 
   server:
-    image: server:0.1.0-SNAPSHOT
+    image: server:latest
     ports:
      - "8080:8080"

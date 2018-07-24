@@ -23,7 +23,8 @@ lazy val commonSettings = Seq(
 )
 
 lazy val dockerSettings = Seq(
-  dockerBaseImage := "openjdk:jre-alpine"
+  dockerBaseImage := "openjdk:jre-alpine",
+  dockerUpdateLatest := true
 )
 
 lazy val root = (project in file("."))
