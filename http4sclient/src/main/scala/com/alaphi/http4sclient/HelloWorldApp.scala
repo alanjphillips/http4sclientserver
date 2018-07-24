@@ -14,6 +14,11 @@ object HelloWorldApp extends App {
     _    <- IO { println(json) }
   } yield ()
 
-  sayHello.unsafeRunSync()
+  val sayHelloErrorHandled =
+    sayHello.handleErrorWith { error =>
+      IO { println(s"Something went wrong: ${error.getMessage}") }
+    }
+
+  sayHelloErrorHandled.unsafeRunSync()
 
 }
